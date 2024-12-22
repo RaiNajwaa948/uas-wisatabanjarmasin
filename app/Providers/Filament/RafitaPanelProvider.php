@@ -27,6 +27,7 @@ class RafitaPanelProvider extends PanelProvider
             ->id('rafita')
             ->path('rafita')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => Color::Amber,
             ])
