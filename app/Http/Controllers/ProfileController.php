@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index()
-    {
-        $profiles = Profile::all(); // Ambil semua data profil
-        return view('front.index', compact('profiles')); // Kirim data ke tampilan 'profile.index'
+    public function index() {
+        $profiles = Profile::all();
+        return view('front.index', [
+            'profiles' => $profiles
+        ]); 
     }
 }

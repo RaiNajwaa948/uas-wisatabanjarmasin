@@ -64,17 +64,59 @@
             <div class="inner">
                 <h2 class="major">Our Profiles</h2>
                 
-                <section class="features">
-                    <article>
-                        <a href="#" class="image"><img src="{{ asset('assets/images/pita.jpg') }}" alt="Pic 04"></a>
-                        <h3 class="major">Rafita Aisyah</h3>
-                        <p>NIM : C050423009</p>
-                        <p>Kelas : SIKC-3B</p>
-                        <p>Email : rafitaasyh@gmail.com</p>
-                        <p>GitHub : rafitaaisyah</p>
-                       
-                    </article>
-                    <article>
+                @forelse ($profiles as $profile)
+                    <ul class="">
+                        <li>
+                            <p class="font-medium text-aktiv-grey">
+                                NIM: {{ $profile->nim }}
+                            </p>
+                        </li>
+                        <li>
+                            <h3 class="font-semibold text-lg leading-[27px] break-words">
+                                Nama: {{ $profile->nama }}
+                            </h3>
+                        </li>
+                        <li>
+                            <p class="font-medium text-aktiv-grey">
+                                Email: {{ $profile->email }}
+                            </p>
+                        </li>
+                        <li>
+                            <p class="font-medium text-aktiv-grey">
+                                Kelas: {{ $profile->kelas }}
+                            </p>
+                        </li>
+                        <li>
+                            <p class="font-medium text-aktiv-grey">
+                                https://github.com/{{ $profile->github }}
+                            </p>
+                        </li>
+                        <li>
+                            <p class="font-medium text-aktiv-grey">
+                                Desktripsi: {{ $profile->bio }}
+                            </p>
+
+                        </li>
+                    </ul>
+                    <hr>
+                @empty
+                    <p>Belum ada data kategori</p>
+                @endforelse
+            </div>
+                <section class="features" style="display: flex; justify-content: space-around">
+                    @forelse ($profiles as $profile)
+                        <article style="max-width: 30%">
+                            <a href="#" class="image"><img src="{{ asset('storage/'. $profile->photo) }}" alt="Pic 04"></a>
+                            <h3 class="major">{{ $profile->nama }}</h3>
+                            <p>NIM : {{ $profile->nim }}</p>
+                            <p>Kelas : {{ $profile->kelas }}</p>
+                            <p>Email : {{ $profile->email }}</p>
+                            <p>GitHub : {{ $profile->github }}</p>
+                        </article>
+                    @empty
+                        <p>Belum ada data profile</p>
+                    @endforelse
+                    {{-- <article>
                         <a href="#" class="image"><img src="{{ asset('assets/images/rahmi.jpg') }}" alt="Pic 05"></a>
                         <h3 class="major">Rahmi Najwa</h3>
                         <p>NIM : C050423019</p>
@@ -82,8 +124,8 @@
                         <p>Email : rahminajwa978@gmail.com</p>
                         <p>GitHub : RaiNajwaa948</p>                       
                         
-                    </article>
-                    <p>Kami memiliki keahlian dalam pengembangan backend menggunakan PHP dengan framework Laravel, pengembangan frontend menggunakan HTML, CSS, dan JavaScript, serta pengembangan aplikasi mobile native di platform Android menggunakan Java dan Kotlin. Kami berkomitmen memberikan solusi terbaik melalui teknologi yang kami kuasai.</p>
+                    </article> --}}
+                    {{-- <p>Kami memiliki keahlian dalam pengembangan backend menggunakan PHP dengan framework Laravel, pengembangan frontend menggunakan HTML, CSS, dan JavaScript, serta pengembangan aplikasi mobile native di platform Android menggunakan Java dan Kotlin. Kami berkomitmen memberikan solusi terbaik melalui teknologi yang kami kuasai.</p> --}}
                 </section>
                     
             </div>

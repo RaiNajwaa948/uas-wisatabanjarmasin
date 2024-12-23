@@ -33,7 +33,7 @@ class TouristSpotResource extends Resource
                ->label('Category Id')
                ->maxLength(20),
                TextInput::make('location_id')
-               ->label('Location')
+               ->label('Location Id')
                ->maxLength(20),
                Textarea::make('description')
                 ->label('Description')

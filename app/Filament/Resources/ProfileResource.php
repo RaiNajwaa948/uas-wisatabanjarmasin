@@ -28,20 +28,39 @@ class ProfileResource extends Resource
     {
         return $form
         ->schema([
-            TextInput::make('name')
-                ->label('Name')
-                ->required()
-                ->maxLength(255),
+            TextInput::make('nim')
+            ->label('NIM')
+            ->required()
+            ->maxLength(255),
+
+            TextInput::make('nama')
+            ->label('Name')
+            ->required()
+            ->maxLength(255),
+
+            TextInput::make('email')
+            ->label('Email')
+            ->required()
+            ->maxLength(255),
 
             FileUpload::make('photo')
-                ->label('Profile Photo')
-                ->image()
-                ->directory('uploads/profiles') 
-                ->visibility('public'),
+            ->label('Profile Photo')
+            ->image()
+            ->directory('profils'),
+
+            TextInput::make('kelas')
+            ->label('Kelas')
+            ->required()
+            ->maxLength(255),
+
+            TextInput::make('github')
+            ->label('GitHub')
+            ->required()
+            ->maxLength(255),
 
             Textarea::make('bio')
-                ->label('Bio')
-                ->maxLength(500),
+            ->label('Bio')
+            ->maxLength(500),
         ]);
     }
 
@@ -49,21 +68,32 @@ class ProfileResource extends Resource
     {
         return $table
         ->columns([
-            TextColumn::make('name')
-                ->label('Name')
-                ->sortable()
-                ->searchable(),
+            TextColumn::make('nim')
+            ->label('NIM'),
 
-                ImageColumn::make('photo')
-                ->label('Profile Photo')
-                ->getStateUsing(fn ($record) => $record->photo ? asset('storage/uploads/profiles/' . $record->photo) : null)
-                ->width(50)
-                ->height(50),
+            TextColumn::make('nama')
+            ->label('Nama')
+            ->sortable()
+            ->searchable(),
+
+            TextColumn::make('email')
+            ->label('Email'),
+
+            ImageColumn::make('photo')
+            ->label('Profile Photo')
+            // ->getStateUsing(fn ($record) => $record->photo ? asset('storage/uploads/profiles/' . $record->photo) : null)
+            ->width(50)
+            ->height(50),
+
+            TextColumn::make('kelas')
+            ->label('Kelas'),
             
+            TextColumn::make('github')
+            ->label('GitHub'),
 
             TextColumn::make('bio')
-                ->label('Bio')
-                ->limit(50), 
+            ->label('Bio')
+            ->limit(50), 
         ]);
         
         
