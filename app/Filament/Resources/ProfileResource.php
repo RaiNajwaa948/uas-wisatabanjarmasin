@@ -54,15 +54,19 @@ class ProfileResource extends Resource
                 ->sortable()
                 ->searchable(),
 
-            ImageColumn::make('photo')
+                ImageColumn::make('photo')
                 ->label('Profile Photo')
+                ->getStateUsing(fn ($record) => $record->photo ? asset('storage/uploads/profiles/' . $record->photo) : null)
                 ->width(50)
                 ->height(50),
+            
 
             TextColumn::make('bio')
                 ->label('Bio')
                 ->limit(50), 
         ]);
+        
+        
     }
 
     public static function getRelations(): array

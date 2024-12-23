@@ -10,6 +10,8 @@ class Profile extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Name',
+        'name', // Ubah ke huruf kecil agar sesuai dengan kolom di database
+        'photo', // Tambahkan kolom jika ada
+        'bio',   // Tambahkan kolom jika ada
     ];
 }

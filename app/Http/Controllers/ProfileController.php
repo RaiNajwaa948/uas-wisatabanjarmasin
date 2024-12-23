@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Profile;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function getProfiles()
+    public function index()
     {
-        $profileCount = DB::table('profiles')
-            ->join('users', 'profiles.user_id', '=', 'users.id')
-            ->where('users.email')
-            ->count();
-
-        return $profileCount;
+        $profiles = Profile::all(); // Ambil semua data profil
+        return view('front.index', compact('profiles')); // Kirim data ke tampilan 'profile.index'
     }
 }
